@@ -1,0 +1,244 @@
+﻿<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+  <material name="orange">
+      <color rgba="1 0.3 0.1 1"/>
+  </material>
+  <material name="aquablue" >
+    <color rgba="0.00784313725490196 0.8470588235294118 0.9137254901960784 1.0" />
+  </material>
+ 
+
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="11.87"/>
+      <inertia ixx="0.23942" ixy="0" ixz="0.0018807" iyy="0.42955" iyz="0" izz="0.28243"/>
+    </inertial>
+    <visual>
+      <!-- Shift mesh so robot body is centered on base_link origin -->
+      <origin xyz="-0.2691 0.6850 -0.6936" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/base_link.STL"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.2691 0.6850 -0.6936" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/base_link.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <link name="right_wheel">
+    <inertial>
+      <origin xyz="0.0000 -0.0444 0.0000" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.005582" ixy="0" ixz="0" iyy="0.010506" iyz="0" izz="0.005582"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/left_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.64706 0.61961 0.58824 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/left_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <!-- Original: (0.26915, -1.0, 0.67469) minus CoM offset (0.2691, -0.685, 0.6936) -->
+    <origin xyz="0.00005 -0.31500 -0.01891" rpy="-3.1416 1.5448 -3.1416"/>
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="left_wheel">
+    <inertial>
+      <origin xyz="0.0000 0 0.0000" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia ixx="0.005582" ixy="0" ixz="0" iyy="0.010506" iyz="0" izz="0.005582"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/right_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.64706 0.61961 0.58824 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/right_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <!-- Original: (0.26915, -0.37359, 0.67469) minus CoM offset (0.2691, -0.685, 0.6936) -->
+    <origin xyz="0.00005 0.31141 -0.01891" rpy="-3.1416 1.5448 -3.1416"/>
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="back_castor">
+    <inertial>
+      <origin xyz="-0.0000 0.0075 -0.0305" rpy="0 0 0"/>
+      <mass value="0.016198"/>
+      <inertia ixx="9.6663e-06" ixy="0" ixz="0" iyy="1.2353e-05" iyz="0" izz="1.4421e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/back_castor.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/back_castor.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="back_castor_joint" type="fixed">
+    <!-- Original: (-0.10911, -0.68499, 0.49599) minus CoM offset (0.2691, -0.685, 0.6936) -->
+    <origin xyz="-0.37821 0.00001 -0.19761" rpy="-3.1416 0 -2.6028"/>
+    <parent link="base_link"/>
+    <child link="back_castor"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="back_wheel">
+    <inertial>
+      <origin xyz="0.0000 0.0015 0.0000" rpy="0 0 0"/>
+      <mass value="0.10036"/>
+      <inertia ixx="3.4167e-05" ixy="0" ixz="0" iyy="5.2134e-05" iyz="0" izz="3.4167e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/back_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/back_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="back_wheel_joint" type="fixed">
+    <origin xyz="0 0.030947 -0.0125" rpy="0 1.2749 -1.5708"/>
+    <parent link="back_castor"/>
+    <child link="back_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="front_castor">
+    <inertial>
+      <origin xyz="-0.0000 0.0075 -0.0305" rpy="0 0 0"/>
+      <mass value="0.016198"/>
+      <inertia ixx="9.6663e-06" ixy="0" ixz="0" iyy="1.2353e-05" iyz="0" izz="1.4421e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/front_castor.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.2 0.2 0.2 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/front_castor.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="front_castor_joint" type="fixed">
+    <!-- Original: (0.64739, -0.68499, 0.49599) minus CoM offset (0.2691, -0.685, 0.6936) -->
+    <origin xyz="0.37829 0.00001 -0.19761" rpy="3.1416 0 1.1185"/>
+    <parent link="base_link"/>
+    <child link="front_castor"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="front_wheel">
+    <inertial>
+      <origin xyz="0.0000 0.0012 0.0000" rpy="0 0 0"/>
+      <mass value="0.10036"/>
+      <inertia ixx="3.4167e-05" ixy="0" ixz="0" iyy="5.2134e-05" iyz="0" izz="3.4167e-05"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/front_wheel.STL"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.79216 0.81961 0.93333 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/front_wheel.STL"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="front_wheel_joint" type="fixed">
+    <origin xyz="0 0.030947 -0.0125" rpy="0 0.22579 -1.5708"/>
+    <parent link="front_castor"/>
+    <child link="front_wheel"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+      <!-- BASE_FOOTPRINT -->
+<link name="base_footprint">
+    </link>
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_link"/>
+        <child link="base_footprint"/>
+        <!-- base_footprint is on the ground: wheel_radius(0.205) + axle_z_offset(0.019) below base_link -->
+        <origin xyz="0 0 -0.224" rpy="0 0 0"/>
+    </joint>
+
+  <gazebo reference="back_wheel">
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
+  <kp>1000000.0</kp>
+  <kd>100.0</kd>
+  <minDepth>0.001</minDepth>
+</gazebo>
+  <gazebo reference="front_wheel">
+  <mu1>0.1</mu1>
+  <mu2>0.1</mu2>
+  <kp>1000000.0</kp>
+  <kd>100.0</kd>cd ~/alpha_bot
+  <minDepth>0.001</minDepth>
+</gazebo>
+</robot>

@@ -1,0 +1,420 @@
+<sdf version='1.11'>
+  <model name='alpha_bot'>
+    <link name='dummy_link'>
+      <inertial>
+        <pose>0.27402516049845022 0.64321429403565711 0.68299945133037931 0 0 0</pose>
+        <mass>12.017250000000001</mass>
+        <inertia>
+          <ixx>0.50337368309714492</ixx>
+          <ixy>0.086641797500942364</ixy>
+          <ixz>0.0081043693040649956</ixz>
+          <iyy>0.45961050542607401</iyy>
+          <iyz>-0.018816415173981579</iyz>
+          <izz>0.57360514180921207</izz>
+        </inertia>
+      </inertial>
+      <collision name='dummy_link_fixed_joint_lump__base_link_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='dummy_link_fixed_joint_lump__camera_link_collision_1'>
+        <pose>0.27827000000000002 -0.37358999999999998 0.67876999999999998 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name='dummy_link_fixed_joint_lump__lidar_link_collision_2'>
+        <pose>0.68427000000000004 -0.68284 0.89098999999999995 1.5708 -5.5511151231257827e-17 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/lidar_link.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='dummy_link_fixed_joint_lump__base_link_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/base_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.990199983 1 1 1</diffuse>
+          <ambient>0.990199983 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name='dummy_link_fixed_joint_lump__camera_link_visual_1'>
+        <pose>0.27827000000000002 -0.37358999999999998 0.67876999999999998 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/camera_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.990199983 1 1 1</diffuse>
+          <ambient>0.990199983 1 1 1</ambient>
+        </material>
+      </visual>
+      <visual name='dummy_link_fixed_joint_lump__lidar_link_visual_2'>
+        <pose>0.68427000000000004 -0.68284 0.89098999999999995 1.5708 -5.5511151231257827e-17 1.5708</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/lidar_link.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1 1 1 1</diffuse>
+          <ambient>1 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='back_castor_joint' type='revolute'>
+      <pose relative_to='dummy_link'>-0.10911 -0.68498999999999999 0.49598999999999999 3.1415853071795872 -2.1175823681357508e-22 -2.6027999999999998</pose>
+      <parent>dummy_link</parent>
+      <child>back_castor</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='back_castor'>
+      <pose relative_to='back_castor_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.00015456000000000001 0.0068509 -0.038698999999999997 0 0 0</pose>
+        <mass>0.016198000000000001</mass>
+        <inertia>
+          <ixx>9.6662999999999993e-06</ixx>
+          <ixy>-6.1491000000000004e-08</ixy>
+          <ixz>-4.7184000000000001e-08</ixz>
+          <iyy>1.2353e-05</iyy>
+          <iyz>-3.0290999999999999e-06</iyz>
+          <izz>1.4421e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_castor_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/back_castor.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='back_castor_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/back_castor.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.25 0.25 0.25 1</diffuse>
+          <ambient>0.25 0.25 0.25 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='back_wheel_joint' type='revolute'>
+      <pose relative_to='back_castor'>0 0.030946999999999999 -0.012500000000000001 0 1.2748999999999999 -1.5707999999999998</pose>
+      <parent>back_castor</parent>
+      <child>back_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='back_wheel'>
+      <pose relative_to='back_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.1102e-16 0.0015 -1.1102e-16 0 0 0</pose>
+        <mass>0.10036</mass>
+        <inertia>
+          <ixx>3.4167e-05</ixx>
+          <ixy>-5.5903999999999999e-20</ixy>
+          <ixz>2.9645999999999999e-21</ixz>
+          <iyy>5.2133999999999999e-05</iyy>
+          <iyz>-5.7598e-20</iyz>
+          <izz>3.4167e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='back_wheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/back_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='back_wheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/back_wheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.990199983 1 1 1</diffuse>
+          <ambient>0.990199983 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='front_castor_joint' type='revolute'>
+      <pose relative_to='dummy_link'>0.64739000000000002 -0.68498999999999999 0.49598999999999999 -3.1415853071795872 0 1.1185</pose>
+      <parent>dummy_link</parent>
+      <child>front_castor</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_castor'>
+      <pose relative_to='front_castor_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-0.00015453999999999999 0.0068509 -0.038698999999999997 0 0 0</pose>
+        <mass>0.016198000000000001</mass>
+        <inertia>
+          <ixx>9.6662999999999993e-06</ixx>
+          <ixy>-6.1483999999999997e-08</ixy>
+          <ixz>-4.7186999999999998e-08</ixz>
+          <iyy>1.2353e-05</iyy>
+          <iyz>-3.0290999999999999e-06</iyz>
+          <izz>1.4421e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_castor_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/front_castor.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='front_castor_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/front_castor.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.25 0.25 0.25 1</diffuse>
+          <ambient>0.25 0.25 0.25 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='front_wheel_joint' type='revolute'>
+      <pose relative_to='front_castor'>0 0.030946999999999999 -0.012500000000000001 -1.4239213960193166e-17 0.22578999999999999 -1.5708</pose>
+      <parent>front_castor</parent>
+      <child>front_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='front_wheel'>
+      <pose relative_to='front_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>1.1102e-16 0.00125 1.1102e-16 0 0 0</pose>
+        <mass>0.10036</mass>
+        <inertia>
+          <ixx>3.4167e-05</ixx>
+          <ixy>2.0329000000000001e-20</ixy>
+          <ixz>0</ixz>
+          <iyy>5.2133999999999999e-05</iyy>
+          <iyz>1.9057999999999999e-21</iyz>
+          <izz>3.4167e-05</izz>
+        </inertia>
+      </inertial>
+      <collision name='front_wheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/front_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='front_wheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/front_wheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.990199983 1 1 1</diffuse>
+          <ambient>0.990199983 1 1 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='left_wheel_joint' type='revolute'>
+      <pose relative_to='dummy_link'>0.26913999999999999 -0.37358999999999998 0.67469000000000001 -3.1415853071795872 -0.42107999999999995 0</pose>
+      <parent>dummy_link</parent>
+      <child>left_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='left_wheel'>
+      <pose relative_to='left_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>1.1102e-16 0.042183999999999999 -1.1102e-16 0 0 0</pose>
+        <mass>7.9936999999999996</mass>
+        <inertia>
+          <ixx>0.10799</ixx>
+          <ixy>-1.1275e-18</ixy>
+          <ixz>1.0408e-17</ixz>
+          <iyy>0.20608000000000001</iyy>
+          <iyz>4.0008000000000003e-18</iyz>
+          <izz>0.10799</izz>
+        </inertia>
+      </inertial>
+      <collision name='left_wheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/left_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='left_wheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/left_wheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.808824956 0.774512529 0.735300064 1</diffuse>
+          <ambient>0.808824956 0.774512529 0.735300064 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <joint name='right_wheel_joint' type='revolute'>
+      <pose relative_to='dummy_link'>0.26915 -0.90749000000000002 0.67469000000000001 3.1415853071795872 1.5447999999999995 3.1415853071795872</pose>
+      <parent>dummy_link</parent>
+      <child>right_wheel</child>
+      <axis>
+        <xyz>0 1 0</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='right_wheel'>
+      <pose relative_to='right_wheel_joint'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.1102e-16 -0.046716000000000001 1.1102e-16 0 0 0</pose>
+        <mass>7.9936999999999996</mass>
+        <inertia>
+          <ixx>0.10799</ixx>
+          <ixy>1.3721e-18</ixy>
+          <ixz>-2.6020999999999998e-18</ixz>
+          <iyy>0.20608000000000001</iyy>
+          <iyz>4.8091999999999998e-18</iyz>
+          <izz>0.10799</izz>
+        </inertia>
+      </inertial>
+      <collision name='right_wheel_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/right_wheel.STL</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='right_wheel_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://alpha_bot/meshes/right_wheel.STL</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>0.808824956 0.774512529 0.735300064 1</diffuse>
+          <ambient>0.808824956 0.774512529 0.735300064 1</ambient>
+        </material>
+      </visual>
+    </link>
+    <frame name='camera_joint' attached_to='base_link'>
+      <pose>0.27827000000000002 -0.37358999999999998 0.67876999999999998 0 0 0</pose>
+    </frame>
+    <frame name='camera_link' attached_to='camera_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='lidar_joint' attached_to='base_link'>
+      <pose>0.68427000000000004 -0.68284 0.89098999999999995 1.5708 -5.5511151231257827e-17 1.5708</pose>
+    </frame>
+    <frame name='lidar_link' attached_to='lidar_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='dummy_joint' attached_to='dummy_link'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+    <frame name='base_link' attached_to='dummy_joint'>
+      <pose>0 0 0 0 0 0</pose>
+    </frame>
+  </model>
+</sdf>
