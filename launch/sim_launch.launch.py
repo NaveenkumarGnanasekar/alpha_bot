@@ -14,7 +14,7 @@ def generate_launch_description():
 
     package_name = 'alpha_bot'
 
-    # ================= ROBOT STATE PUBLISHER =================
+   
     rsp = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(

@@ -1,18 +1,5 @@
 #!/usr/bin/env python3
-"""
-Keyboard teleop node for alpha_bot (differential drive).
 
-Publishes to /cmd_vel (geometry_msgs/Twist).
-Bridge this to Gazebo with ros_gz_bridge.
-
-Controls:
-  w / s  : forward / backward
-  a / d  : turn left / right
-  q / e  : strafe-turn (arc left / arc right)
-  space  : stop
-  +/-    : increase/decrease speed
-  Ctrl+C : quit
-"""
 
 import sys
 import tty
@@ -34,11 +21,11 @@ BANNER = """
 ╚══════════════════════════════════════╝
 """
 
-# Differential drive parameters (from URDF)
+
 WHEEL_RADIUS    = 0.205   # metres
 WHEEL_SEPARATION = 0.5339  # metres (left Y - right Y)
 
-# Default speeds
+
 LINEAR_STEP  = 0.05   # m/s per keypress
 ANGULAR_STEP = 0.1    # rad/s per keypress
 MAX_LINEAR   = 0.5    # m/s

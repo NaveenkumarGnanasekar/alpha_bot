@@ -31,6 +31,10 @@ setup(
     entry_points={
         'console_scripts': [
             "circular_motion = alpha_bot.circular_motion:main",
+            "llm_commander = alpha_bot.llm_commander:main",
+            "text_input = alpha_bot.text_input:main",
+            "voice_input = alpha_bot.voice_input:main",
+            "waypoint_teacher = alpha_bot.waypoint_teacher:main",
         ],
     },
 )

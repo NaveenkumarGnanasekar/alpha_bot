@@ -7,6 +7,9 @@
   <material name="aquablue" >
     <color rgba="0.00784313725490196 0.8470588235294118 0.9137254901960784 1.0" />
   </material>
+  <material name="black">
+        <color rgba="0.26 0.23 0.25 1.0"/>
+  </material>
  
 
   <link name="base_link">
@@ -21,7 +24,7 @@
       <geometry>
         <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/base_link.STL"/>
       </geometry>
-      <material name="red">
+      <material name="orange">
         <color rgba="0.79216 0.81961 0.93333 1"/>
       </material>
     </visual>
@@ -44,8 +47,8 @@
       <geometry>
         <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/left_wheel.STL"/>
       </geometry>
-      <material name="">
-        <color rgba="0.64706 0.61961 0.58824 1"/>
+      <material name="black">
+        <color rgba="0.26 0.23 0.25 1.0"/>
       </material>
     </visual>
     <collision>
@@ -75,8 +78,8 @@
       <geometry>
         <mesh filename="file:///home/naveen/alpha_bot/src/alpha_bot/meshes/right_wheel.STL"/>
       </geometry>
-      <material name="">
-        <color rgba="0.64706 0.61961 0.58824 1"/>
+      <material name="black">
+        <color rgba="0.26 0.23 0.25 1.0"/>
       </material>
     </visual>
     <collision>
