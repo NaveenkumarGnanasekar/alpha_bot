@@ -3,14 +3,15 @@
 A custom differential-drive robot that autonomously navigates an indoor environment and responds to natural language commands — built entirely on ROS 2, Gazebo, Nav2, and a local LLM.
 
 ---
-<img width="2005" height="1045" alt="Screenshot from 2026-06-16 15-01-21" src="https://github.com/user-attachments/assets/92013715-4d8c-4875-b43a-18219aa804b4" />
+<img width="1266" height="882" alt="Screenshot from 2026-06-16 11-26-56" src="https://github.com/user-attachments/assets/4984f996-53d2-4a5a-8782-620ec9cf205d" />
+
 ## Demo
 
 > Say `"go to workspaceA"` — the robot plans and drives there autonomously.
 > Say `"remember this as room3"` — that spot is saved and immediately usable.
 
 ---
-
+<img width="2005" height="1045" alt="Screenshot from 2026-06-16 15-01-21" src="https://github.com/user-attachments/assets/92013715-4d8c-4875-b43a-18219aa804b4" />
 ## Concepts Used
 
 ### 1. Robot Modeling (URDF / Xacro)
@@ -24,6 +25,9 @@ Wheel actuation is handled by **ros2_control** with the `diff_drive_controller` 
 
 > **Jazzy note:** `diff_drive_controller` in ROS 2 Jazzy requires `TwistStamped` while Nav2 publishes plain `Twist`. A `twist_stamper` node bridges the gap.
 
+
+<img width="1928" height="1080" alt="Screenshot from 2026-06-16 11-37-48" src="https://github.com/user-attachments/assets/7b10b455-be3c-4649-9782-e61129048663" />
+
 ### 4. SLAM — Mapping
 Before autonomous navigation, the robot needs a map. **SLAM (Simultaneous Localization and Mapping)** was used to drive the robot through the world manually while it built an occupancy grid map — a 2D image where white = free space, black = walls, grey = unknown. The result is saved as `first_map.pgm` + `first_map.yaml`.
 
@@ -32,6 +36,8 @@ Once the map is saved, **AMCL (Adaptive Monte Carlo Localization)** takes over. 
 
 ### 6. Nav2 — Autonomous Navigation
 The **Nav2** stack handles getting from point A to point B:
+
+<img width="1910" height="1045" alt="Screenshot from 2026-06-16 11-35-21" src="https://github.com/user-attachments/assets/c08d7920-79c3-4171-b812-d2da8c2566d9" />
 
 | Component | Role |
 |---|---|
@@ -115,7 +121,7 @@ The `voice_input` node provides push-to-talk speech recognition using **faster-w
 ```
 
 ---
-
+<img width="1910" height="1045" alt="Screenshot from 2026-06-16 11-29-21" src="https://github.com/user-attachments/assets/351e7426-15a9-4dec-bb3f-78d1e05325ff" />
 ## Tech Stack
 
 | Layer | Technology |
@@ -179,16 +185,8 @@ ros2 run alpha_bot voice_input    # or speak them
 - Real hardware deployment
 
 ---
-<img width="2005" height="1045" alt="Screenshot from 2026-06-16 15-01-21" src="https://github.com/user-attachments/assets/92013715-4d8c-4875-b43a-18219aa804b4" />
-<img width="1928" height="1080" alt="Screenshot from 2026-06-16 11-37-48" src="https://github.com/user-attachments/assets/7b10b455-be3c-4649-9782-e61129048663" />
-<img width="1910" height="1045" alt="Screenshot from 2026-06-16 11-35-21" src="https://github.com/user-attachments/assets/c08d7920-79c3-4171-b812-d2da8c2566d9" />
-<img width="1910" height="1045" alt="Screenshot from 2026-06-16 11-29-21" src="https://github.com/user-attachments/assets/351e7426-15a9-4dec-bb3f-78d1e05325ff" />
-<img width="1266" height="882" alt="Screenshot from 2026-06-16 11-26-56" src="https://github.com/user-attachments/assets/4984f996-53d2-4a5a-8782-620ec9cf205d" />
-
 
 https://github.com/user-attachments/assets/09c0aa18-ceba-4307-9dec-c3e61fc28555
-
-<img width="1266" height="882" alt="Screenshot from 2026-06-16 11-26-56" src="https://github.com/user-attachments/assets/bd561726-0951-4b2c-98eb-e1e75be35996" />
 
 ## License
 
