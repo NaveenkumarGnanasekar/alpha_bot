@@ -1,4 +1,4 @@
-# Alpha Bot 🤖
+# Alpha Bot 
 
 A custom differential-drive robot that autonomously navigates an indoor environment and responds to natural language commands — built entirely on ROS 2, Gazebo, Nav2, and a local LLM.
 
